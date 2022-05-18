@@ -1,5 +1,7 @@
 package com.hshc.relay.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -11,13 +13,17 @@ public class BaseEntity implements Serializable{
 
     private Integer id;
 
+    @JSONField(name = "create_time", format = "yyyy-MM-dd HH:mm:ss")
     private Timestamp createTime;
 
+    @JSONField(name = "modify_time", format = "yyyy-MM-dd HH:mm:ss")
     private Timestamp modifyTime;
 
     private User creator;
 
     private User modifier;
+
+    private Integer version;
 
     public Integer getId() {
         return id;
@@ -57,5 +63,13 @@ public class BaseEntity implements Serializable{
 
     public void setModifier(User modifier) {
         this.modifier = modifier;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

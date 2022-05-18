@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.AddScitemResponseDao">
+    <sql id="columns">
+        sc.item_id,sc.item_name,sc.outer_code,sc.item_type,sc.properties,sc.bar_code,sc.wms_code,sc.is_friable,sc.is_dangerous,sc.is_costly,sc.is_warranty,sc.weight,
+        sc.length,sc.width,sc.height,sc.volume,sc.price,sc.remark,sc.matter_status,sc.brand_id,sc.brand_name,sc.is_area_sale,sc.options
+    </sql>
+
+    <insert id="insert"  parameterType="com.taobao.api.response.ScitemAddResponse">
+        insert into t_scitem (item_id,item_name,outer_code,item_type,properties,bar_code,wms_code,is_friable,is_dangerous,is_costly,is_warranty,weight,
+                    length,width,height,volume,price,remark,matter_status,brand_id,brand_name,is_area_sale,options)
+        values(#{scItem.itemId},#{scItem.itemName},#{scItem.outerCode},#{scItem.itemType},#{scItem.properties},#{scItem.barCode},#{scItem.wmsCode},#{scItem.isFriable},
+              #{scItem.isDangerous},#{scItem.isCostly},#{scItem.isWarranty},#{scItem.weight},#{scItem.length},#{scItem.width},#{scItem.height},#{scItem.volume},#{scItem.price},
+              #{scItem.remark},#{scItem.matterStatus},#{scItem.brandId},#{scItem.brandName},#{scItem.isAreaSale},#{scItem.options})
+    </insert>
+
+    <select id="selectOne" parameterType="String" resultType="com.taobao.api.response.ScitemAddResponse">
+        select <include refid="columns"/>
+        from t_scitem sc
+        where id = #{id}
+    </select>
+
+
+
+</mapper>

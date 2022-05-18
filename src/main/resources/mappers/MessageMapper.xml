@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.MessageDao">
+
+    <insert id="insert" parameterType="com.taobao.api.internal.tmc.Message">
+        INSERT INTO taobao_message(id, topic, pub_app_key, pub_time, outgoing_time, user_id, user_nick, content, raw)
+        VALUES (#{id}, #{topic}, #{pubAppKey}, #{pubTime}, #{outgoingTime}, #{userId}, #{userNick}, #{content}, #{raw, typeHandler=com.hshc.relay.dao.typehandler.MapHandler})
+    </insert>
+
+</mapper>

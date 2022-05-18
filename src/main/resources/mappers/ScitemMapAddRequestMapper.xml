@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.ScitemMapAddRequestDao">
+
+    <insert id="insert" parameterType="com.taobao.api.request.ScitemMapAddRequest">
+        insert into fenxiao_product_map (ic_item_id,sc_item_id,outer_code,sku_id,creattime,is_send)values(#{itemId,jdbcType=BIGINT},#{scItemId,jdbcType=BIGINT},#{outerCode,jdbcType=VARCHAR},
+        #{skuId,jdbcType=BIGINT},now(),'false')
+    </insert>
+
+    <update id="update" parameterType="com.taobao.api.request.ScitemMapAddRequest">
+        update fenxiao_product_map set
+            updatetime=now()
+            <if test="outerCode != null">
+                ,outer_code=#{outerCode}
+            </if>
+            <if test="skuId">
+                ,sku_id=#{skuId}
+            </if>
+        where ic_item_id=#{itemId}
+    </update>
+
+    <update id="updateSendStatu" parameterType="map">
+        update fenxiao_product_map set
+            updatetime=now()
+            <if test="log != null">
+                ,log=#{log}
+            </if>
+            <if test="isSend">
+                ,is_send=#{isSend}
+            </if>
+        where ic_item_id=#{icItemId}
+
+    </update>
+</mapper>

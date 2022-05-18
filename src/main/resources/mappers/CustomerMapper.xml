@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.CustomerDao">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.hshc.relay.entity.riskcontrol.Customer">
+        insert into rc_customer(id, name, identity_no, mobile, uuid, consignee_address, item_id)
+        values(#{id}, #{name}, #{identityNo}, #{mobile}, #{uuid}, #{addr}, #{itemId})
+    </insert>
+
+    <update id="update" parameterType="com.hshc.relay.entity.riskcontrol.Customer">
+        update rc_customer
+        <set>
+            <if test="pass != null">
+                pass = #{pass},
+            </if>
+            <if test="rejectMsg != null">
+                reject_msg = #{rejectMsg},
+            </if>
+            <if test="returned != null">
+                returned = #{returned},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectTopDto" parameterType="com.hshc.relay.entity.riskcontrol.Customer" resultType="com.taobao.api.request.TmallCarLeaseRiskcallbackRequest$CreditInfoTopDto">
+        select rc.name, rc.identity_no "identityNo", rc.mobile, rc.uuid, rc.consignee_address "addr"
+        from rc_customer rc
+        where rc.uuid = #{uuid}
+    </select>
+
+</mapper>

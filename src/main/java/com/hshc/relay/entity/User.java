@@ -15,13 +15,13 @@ public class User extends BaseEntity {
     @Length(min = 6, max = 18, message = "用户名最少为{min}位， 最多为{max}位！")
     private String name;
 
-    @Pattern(regexp = "(\\d{15}$|^\\d{18}$|^\\d{17}(\\d|X|x))", message = "身份证号码格式不正确！")
+    @Pattern(regexp = "\\d{15}|\\d{18}|\\d{17}(\\d|X|x)", message = "身份证号码格式不正确！")
     private String idNumber;
 
     @Pattern(regexp = "1[3|4|5|7|8][0-9]\\d{8}", message = "手机号码格式不正确！")
     private String mobile;
 
-    @NotBlank(message = "身份证号不能为空！")
+    @NotBlank(message = "密码不能为空！")
     @Length(min = 8, max = 18, message = "密码最少为{min}位，最多为{max}位！")
     private String password;
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.StoreManageDao">
+<sql id="columns">
+    store_code,
+    store_name,
+    store_type,
+    alias_name,
+    address,
+    address_area_name,
+    contact,
+    phone,
+    post_code
+</sql>
+<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.taobao.api.domain.Store">
+    insert into inventory_store(
+        <include refid="columns"/>
+    )values(
+        #{storeCode},
+	    #{storeName},
+	    #{storeType},
+	    #{aliasName},
+	    #{address},
+	    #{addressAreaName},
+	    #{contact},
+	    #{phone},
+	    #{postCode}
+    )
+</insert>
+
+<update id="update" parameterType="com.taobao.api.domain.Store">
+    update inventory_store set
+        store_code = #{storeCode}
+    <if test="storeName != null">
+        store_name = #{storeName},
+    </if>
+    <if test="storeType !=null">
+        store_type = #{storeType}
+    </if>
+    <if test="aliasName !=null">
+        alias_name = #{aliasName}
+    </if>
+    <if test="address !=null">
+        address = #{address}
+    </if>
+    <if test="addressAreaName !=null">
+        address_area_name = #{addressAreaName}
+    </if>
+    <if test="contact !=null">
+        contact = #{contact}
+    </if>
+    <if test="phone !=null">
+        phone = #{phone}
+    </if>
+    <if test="postCode !=null">
+        post_code = #{postCode}
+    </if>
+    where store_code = #{storeCode}
+</update>
+
+<select id="selectOne" parameterType="com.taobao.api.domain.Store" resultType="com.taobao.api.domain.Store">
+  select 
+  <include refid="columns"/>
+  from inventory_store 
+  where  store_code = #{storeCode}
+</select>
+</mapper> 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.LocationRealtionEditDao">
+<sql id="columns">
+   status,
+   target_inv_store_type,
+   target_store_code,
+   source_inv_store_type,
+   source_store_code
+</sql>
+<select id="selectList"  resultType="com.taobao.api.request.LocationRelationEditRequest$LocationRelationDto">
+    select <include refid="columns"/> from  shop_store_relation where id =168
+</select>
+
+</mapper> 

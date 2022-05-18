@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -9,10 +9,15 @@
 
     <context:component-scan base-package="com.hshc.relay"/>
 
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <context:property-placeholder location="classpath:lt.properties"/>
 
     <bean id="log4jFiler" class="com.alibaba.druid.filter.logging.Log4jFilter">
         <property name="statementExecutableSqlLogEnable" value="true"/>
+        <property name="statementParameterClearLogEnable" value="false"/>
+        <property name="statementParameterSetLogEnabled" value="false"/>
+        <property name="statementPrepareCallAfterLogEnabled" value="false"/>
+        <property name="statementCloseAfterLogEnabled" value="false"/>
         <property name="statementPrepareAfterLogEnabled" value="false"/>
         <property name="statementExecuteAfterLogEnabled" value="false"/>
         <property name="statementCreateAfterLogEnabled" value="false"/>
@@ -77,4 +82,5 @@
 
     <tx:annotation-driven/>
 
+    <bean class="util.SpringUtil"/>
 </beans>

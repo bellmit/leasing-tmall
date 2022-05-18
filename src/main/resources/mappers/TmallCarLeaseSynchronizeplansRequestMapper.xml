@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.TmallCarLeaseSynchronizeplansRequestDao">
+
+    <insert id="insert" parameterType="com.taobao.api.request.TmallCarLeaseSynchronizeplansRequest">
+        insert into fenxiao_scheme_detail
+            (item_id,plans,creattime,is_send)
+        values(#{itemId,jdbcType=BIGINT},#{plans,jdbcType=VARCHAR},now(),'false')
+    </insert>
+
+    <update id="update" parameterType="com.taobao.api.request.TmallCarLeaseSynchronizeplansRequest">
+          update fenxiao_scheme_detail set
+              updatetime=now()
+              <if test="plans != null">
+                  ,plans=#{plans}
+              </if>
+         where   item_id=#{itemId}
+    </update>
+
+    <update id="updateSendStatu" parameterType="map">
+        update fenxiao_scheme_detail set
+        updatetime=now()
+        <if test="isSend != null">
+            ,is_send=#{isSend}
+        </if>
+        <if test="log != null">
+            ,log=#{log}
+        </if>
+        where   item_id=#{itemId}
+    </update>
+</mapper>

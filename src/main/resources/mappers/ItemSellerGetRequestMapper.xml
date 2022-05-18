@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.ItemSellerGetRequestDao">
+    <insert id="insert" parameterType="com.taobao.api.request.ItemSellerGetRequest">
+          insert into fenxiao_product (item_id,fields,creattime,is_send)values(#{numIid,jdbcType=BIGINT},#{fields,jdbcType=VARCHAR},now(),'false')
+    </insert>
+
+    <update id="update" parameterType="com.taobao.api.request.ItemSellerGetRequest">
+        update fenxiao_product set
+          updatetime=now()
+          <if test="fields != null">
+              ,fields=#{fields}
+          </if>
+        where item_id=#{numIid}
+    </update>
+
+    <update id="updateSendStatu" parameterType="map">
+        update fenxiao_product set
+        updatetime=now()
+        <if test="isSend != null and isSend != ''">
+            ,is_send=#{isSend}
+        </if>
+        <if test="log != null  and log != ''">
+            ,log=#{log}
+        </if>
+        where item_id=#{numIid}
+    </update>
+</mapper>

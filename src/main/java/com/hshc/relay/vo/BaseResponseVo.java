@@ -4,8 +4,8 @@ import java.util.Map;
 
 public class BaseResponseVo
 {
-    private String              code;
-    private String              message;
+    private String code;
+    private String message;
     private Map<String, Object> attrs;
 
     public String getCode() {

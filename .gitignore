@@ -5,5 +5,5 @@ target/**/*
 .settings/**/*
 *.project
 
-
+out/**/*
 /target/

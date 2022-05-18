@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.TradeFullinfoGetRequestDao">
+    <insert id="insert" parameterType="com.taobao.api.request.TradeFullinfoGetRequest">
+        insert into FENXIAO_SCHEME_DETAIL fsd(
+            fsd.`SC_ITEM_ID`,fsd.`SKU_ID`,fsd.`TMALLMODEL`,fsd.`BRAND`,fsd.`LINE`,fsd.`MODEL`,fsd.`COMPANY_NAME`,fsd.`SCHEME_CODE`,fsd.`SCHEME_NAME`,fsd.`INITIAL_PAYMENT_AMOUNT`,
+            fsd.`LEASE_TERM`,fsd.`LOAN_AMOUNT`,fsd.`MONTHLY_PAYMENT`,fsd.`TAIL_PAYMENT_AMOUNT`,fsd.`MSRP`,fsd.`PENALTY`,fsd.`SELLER_ID`,fsd.`STORE_FEE`,fsd.`YEAR`,fsd.`CREATTIME`,fsd.`UPDATETIME`,
+            fsd.`IS_SUCCESS`
+        )values(
+            #{itemId,jdbcType=VARCHAR},#{CarLeasePlanDo.,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR},now(),#{CarLeasePlanDo.brand,jdbcType=VARCHAR},#{CarLeasePlanDo.line,jdbcType=VARCHAR},
+            #{CarLeasePlanDo.model,jdbcType=VARCHAR},#{CarLeasePlanDo.companyName,jdbcType=VARCHAR},#{schemeCode,jdbcType=VARCHAR},#{schemeName,jdbcType=VARCHAR},#{CarLeasePlanDo.initialPaymentAmount,jdbcType=VARCHAR},
+            #{CarLeasePlanDo.leaseTerm,jdbcType=VARCHAR},#{CarLeasePlanDo.loanAmount,jdbcType=VARCHAR},#{CarLeasePlanDo.monthlyPayment,jdbcType=VARCHAR},#{CarLeasePlanDo.tailPaymentAmount,jdbcType=VARCHAR},
+            #{CarLeasePlanDo.msrp,jdbcType=VARCHAR},#{CarLeasePlanDo.penalty,jdbcType=VARCHAR},#{CarLeasePlanDo.sellerId,jdbcType=VARCHAR},#{CarLeasePlanDo.storeFee,jdbcType=VARCHAR},
+            #{CarLeasePlanDo.year,jdbcType=VARCHAR},#{now(),jdbcType=VARCHAR},#{now(),jdbcType=VARCHAR},#{isSuccess,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+
+</mapper>

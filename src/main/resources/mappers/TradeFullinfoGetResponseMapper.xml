@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.TradeFullinfoGetResponseDao">
+    <insert id="insertTrade">
+        insert into orders_main(
+            PAYMENT,STATUS,TID,CREATE_TIME,TITLE,CREATED,BUYER_MESSAGE,BUYER_MEMO,RECEIVER_NAME,RECEIVER_STATE,RECEIVER_ADDRESS,RECEIVER_MOBILE,RECEIVER_PHONE,BUYER_NICK
+        )values(
+            #{payment,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR},now(),#{title,jdbcType=VARCHAR},#{created,jdbcType=VARCHAR},
+            #{buyerMessage,jdbcType=VARCHAR},#{buyerMemo,jdbcType=VARCHAR},#{receiverName,jdbcType=VARCHAR},#{receiverState,jdbcType=VARCHAR},#{receiverAddress,jdbcType=VARCHAR},
+            #{receiverMobile,jdbcType=VARCHAR},#{receiverPhone,jdbcType=VARCHAR},#{buyerNick,jdbcType=VARCHAR}
+        )
+</insert>
+
+    <insert id="insertOder">
+        insert into order_sub(
+          CAR_STORE_CODE,
+          CAR_STORE_NAME,
+          CAR_TAKER,
+          CAR_TAKER_ID,
+          DOWN_PAYMENT,
+          DOWN_PAYMENT_RATIO,
+          ESTIMATE_CON_TIME,
+          ET_SHOP_NAME,
+          INSTALLMENT_NUM,
+          MONTH_PAYMENT,
+          NUM,
+          NUM_IID,
+          OID,
+          OID_STR,
+          ORDER_ATTR,
+          ORDER_FROM,
+          OUT_UNIQUE_ID,
+          PAYMENT,
+          PENALTY,
+          PRICE,
+          REFUND_STATUS,
+          SELLER_RATE,
+          SERVICE_FEE,
+          SKU_ID,
+          SKU_PROPERTIES_NAME,
+          STATUS,
+          STORE_CODE,
+          TAIL_PAYMENT,
+          TITLE,
+          TOTAL_FEE,
+          WS_BANK_APPLY_NO,
+          TYPE,
+          TID
+        )values(
+          #{carStoreCode,jdbcType=VARCHAR},
+          #{carStoreName,jdbcType=VARCHAR},
+          #{carTaker,jdbcType=VARCHAR},
+          #{carTakerId,jdbcType=VARCHAR},
+          #{downPayment,jdbcType=VARCHAR},
+          #{downPaymentRatio,jdbcType=VARCHAR},
+          #{estimateConTime,jdbcType=VARCHAR},
+          #{etShopName,jdbcType=VARCHAR},
+          #{installmentNum,jdbcType=VARCHAR},
+          #{monthPayment,jdbcType=VARCHAR},
+          #{num,jdbcType=VARCHAR},
+          #{numIid,jdbcType=VARCHAR},
+          #{oid,jdbcType=VARCHAR},
+          #{oidStr,jdbcType=VARCHAR},
+          #{orderAttr,jdbcType=VARCHAR},
+          #{orderFrom,jdbcType=VARCHAR},
+          #{outUniqueId,jdbcType=VARCHAR},
+          #{payment,jdbcType=VARCHAR},
+          #{penalty,jdbcType=VARCHAR},
+          #{price,jdbcType=VARCHAR},
+          #{refundStatus,jdbcType=VARCHAR},
+          #{sellerRate,jdbcType=VARCHAR},
+          #{serviceFee,jdbcType=VARCHAR},
+          #{skuId,jdbcType=VARCHAR},
+          #{skuPropertiesName,jdbcType=VARCHAR},
+          #{status,jdbcType=VARCHAR},
+          #{storeCode,jdbcType=VARCHAR},
+          #{tailPayment,jdbcType=VARCHAR},
+          #{title,jdbcType=VARCHAR},
+          #{totalFee,jdbcType=VARCHAR},
+          #{wsBankApplyNo,jdbcType=VARCHAR},
+          #{type,jdbcType=VARCHAR},
+          #{tid,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hshc.relay.dao.CarLeaseTailpaymentbackDao">
+
+<insert id="insertMap" parameterType="Map">
+ insert into tmall_lease_result(
+   <if test="costTime !=null">cost_time,</if>
+   <if test="errorCode !=null">error_code,</if>
+   <if test="errorMessage !=null">error_message,</if>
+   <if test="gmtCurrentTime !=null">gmt_current_time,</if>
+   <if test="msgCode !=null">msg_code,</if>
+   <if test="msgInfo !=null">msg_info,</if>
+   <if test="object !=null">object,</if>
+   <if test="success !=null">success,</if>
+   lease_type,
+   create_time
+ )values(
+     <if test="costTime !=null">#{costTime},</if>
+     <if test="errorCode !=null">#{errorCode},</if>
+     <if test="errorMessage !=null">#{errorMessage},</if>
+     <if test="gmtCurrentTime !=null">#{gmtCurrentTime},</if>
+     <if test="msgCode !=null">#{msgCode},</if>
+     <if test="msgInfo !=null">#{msgInfo},</if>
+     <if test="object !=null">#{object},</if>
+     <if test="success !=null">#{success},</if>
+     #{leaseType},
+     now()
+ )
+</insert>
+<select id="selectOne"  parameterType="int" resultType="com.taobao.api.response.TmallCarLeaseTailpaymentbackResponse$Result">
+select 
+   id 
+   cost_time,
+   error_code,
+   error_message,
+   gmt_current_time,
+   msg_code,
+   msg_info,
+   object,
+   success,
+   lease_type,
+   create_time
+from tmall_lease_result
+where id=#{id}
+</select>
+
+</mapper>

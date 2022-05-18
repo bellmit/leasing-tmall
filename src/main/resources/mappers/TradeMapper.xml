@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hshc.relay.dao.TradeDao">
+
+<insert id="insert" parameterType="com.taobao.api.domain.Trade">
+insert into orders_main(
+  PAYMENT,
+  STATUS,
+  TID,
+  CREATE_TIME,
+  TITLE,
+  CREATED,
+  BUYER_MESSAGE,
+  BUYER_MEMO,
+  RECEIVER_NAME,
+  RECEIVER_STATE,
+  RECEIVER_ADDRESS,
+  RECEIVER_MOBILE,
+  RECEIVER_PHONE,
+  BUYER_NICK
+  
+)values(
+  #{payment,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{tid,jdbcType=VARCHAR},
+  now(),
+  #{title,jdbcType=VARCHAR},
+  #{created,jdbcType=VARCHAR},
+  #{buyerMessage,jdbcType=VARCHAR},
+  #{buyerMemo,jdbcType=VARCHAR},
+  #{receiverName,jdbcType=VARCHAR},
+  #{receiverState,jdbcType=VARCHAR},
+  #{receiverAddress,jdbcType=VARCHAR},
+  #{receiverMobile,jdbcType=VARCHAR},
+  #{receiverPhone,jdbcType=VARCHAR},
+  #{buyerNick,jdbcType=VARCHAR}
+)
+</insert>
+<update id="update" parameterType="com.taobao.api.domain.Trade">
+update orders_main set
+  PAYMENT = #{payment,jdbcType=VARCHAR},
+  STATUS = #{status,jdbcType=VARCHAR},
+  CREATE_TIME = now(),
+  TITLE = #{title,jdbcType=VARCHAR},
+  CREATED = #{created,jdbcType=VARCHAR},
+  BUYER_MESSAGE = #{buyerMessage,jdbcType=VARCHAR},
+  BUYER_MEMO = #{buyerMemo,jdbcType=VARCHAR},
+  RECEIVER_NAME = #{receiverName,jdbcType=VARCHAR},
+  RECEIVER_STATE = #{receiverState,jdbcType=VARCHAR},
+  RECEIVER_ADDRESS = #{receiverAddress,jdbcType=VARCHAR},
+  RECEIVER_MOBILE = #{receiverMobile,jdbcType=VARCHAR},
+  RECEIVER_PHONE = #{receiverPhone,jdbcType=VARCHAR},
+  BUYER_NICK = #{buyerNick,jdbcType=VARCHAR}
+  WHERE TID = #{tid,jdbcType=VARCHAR}
+</update>
+
+<select id="selectInt" parameterType="_long" resultType="int">
+select count(*) from orders_main where tid = #{tid}
+</select>
+
+  <update id="updateSendStatu" parameterType="map">
+    update orders_main set
+          updatetime=now()
+          <if test="isSend != null and isSend != '' ">
+            ,is_send=#{isSend}
+          </if>
+          <if test="log !=null and log !='' ">
+            ,log=#{log}
+          </if>
+    where  tid=#{tid}
+  </update>
+</mapper>
